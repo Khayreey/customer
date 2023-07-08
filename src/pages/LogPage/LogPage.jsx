@@ -3,6 +3,7 @@ import './loginStyle.css'
 
 import Login from '../../component/Login/Login'
 import { useSelector } from 'react-redux'
+import Log from '../../component/Log/Log'
 import { Navigate } from 'react-router-dom'
 
 const LoginPage = () => {
@@ -10,7 +11,7 @@ const LoginPage = () => {
    if(isUserLoggedIn)  return <Navigate to='/' replace/>
   return (
     <div className="main">
-    <Login />
+    <Log />
     <div className="links">
         
     </div>

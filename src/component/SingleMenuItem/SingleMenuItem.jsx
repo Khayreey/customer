@@ -3,14 +3,16 @@ import style from "./singleDishItem.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useDispatch, useSelector } from "react-redux";
 import { AddItemToCart } from "../../store/menu-actions";
+import { useNavigate } from "react-router-dom";
 
 const SingleMenuItem = ({ item, name, price, category }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.userId);
   
-  console.log(userId)
+  
   const addItemToCartHandler = () => {
     dispatch(AddItemToCart(userId , Object.values(item._id)[0]));
+    
   };
 
   return (

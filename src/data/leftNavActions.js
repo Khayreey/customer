@@ -16,7 +16,7 @@ const leftNavActions = [
   },
   {
     lists: [
-      { link: "#", txt: "All Orders" },
+      { link: "orders", txt: "All Orders" },
       { link: "#", txt: "Track Order" },
       { link: "#", txt: "Pick Order" },
     ],

@@ -56,6 +56,7 @@ const openCheckMenuHandler = () => {
 
   const dispatch = useDispatch();
   const userEmail = useSelector((state) => state.auth.userId);
+  const numOfItemsInCart = useSelector((state) => state.cart.numOfItemsInCart);
   console.log(userEmail);
   var barsIcon = (
     <i className="fas fa-bars fs-2" style={{ color: "rgb(2, 36, 71)" }}></i>
@@ -106,7 +107,7 @@ const openCheckMenuHandler = () => {
         <Nav className="d-flex justify-content-center align-content-center gap-3 justify-self-end">
           <Button onClick={openCheckMenuHandler} variant="primary" className='d-flex align-content-center justify-content-center'>
             <i className="fa-solid fa-cart-plus fs-2"></i>
-            <Badge bg="secondary" className='m-auto'>9</Badge>
+            <Badge bg="secondary" className='m-auto'>{numOfItemsInCart}</Badge>
           </Button>
           <Image
             alt="logo"

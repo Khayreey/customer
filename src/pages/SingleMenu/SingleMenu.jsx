@@ -12,7 +12,7 @@ const SingleMenu = () => {
         return items
   })
 
-  console.log(menuItems)
+ 
   return  <Container fluid>
   <MainPageText text="MENU ITEMS" />
   <Container  className="container my-5 p-4 bg-white rounded-2 shadow-sm d-flex justify-content-center flex-wrap gap-5">

@@ -626,6 +626,9 @@ const Login = () => {
         >
           SIGN UP
         </button>
+        <Link to="/login">
+          <button>Already Have Account ?</button>
+        </Link>
       </div>
     </div>
   );

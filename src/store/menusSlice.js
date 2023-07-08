@@ -8,6 +8,7 @@ const menusSlice = createSlice({
     isWaitingForGetMenus: true,
 
     errorInGetMenus: null,
+    isRequireRender : false
   },
   reducers: {
     getMenusFromDb(state, action) {
@@ -32,7 +33,9 @@ const menusSlice = createSlice({
     clearMenusError(state) {
       state.errorInGetDrivers = null;
     },
-  
+    setRequieRender(state){
+      state.isRequireRender = !state.isRequireRender
+    }
    
   },
 });
