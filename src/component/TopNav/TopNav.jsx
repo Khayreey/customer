@@ -117,7 +117,7 @@ const openCheckMenuHandler = () => {
             roundedCircle
             className="border border-1 border-primary p-1"
           />
-          <p className="m-auto">khayrrey</p>
+          
           <i onClick={logoutHandler} className="fa-solid fa-right-from-bracket text-muted m-auto fs-4"></i>
         </Nav>
       </Container>

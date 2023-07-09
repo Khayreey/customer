@@ -14,6 +14,7 @@ const SingleOrder = () => {
    const dispatch = useDispatch()
 
    const id= useSelector((state)=>state.cart.orderId) 
+   console.log(id)
    useEffect(()=>{
     if(!id || id === "") return 
     dispatch(getSingleOrder(id)) 

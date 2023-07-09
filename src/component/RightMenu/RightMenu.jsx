@@ -52,11 +52,13 @@ const RightMenu = () => {
       dispatch(checkMenuActions.setIsCheckMenuClicked(true));
     }
   };
-
+const navigateHandler = ()=>{
+  navigate('/orders' , {replace : true})
+  openCheckMenuHandler()
+}
   const checkOutHandler = () => {
-    dispatch(checkOut(customerId));
-    navigate('/single' , {replace : true})
-    openCheckMenuHandler()
+    dispatch(checkOut(customerId , navigateHandler));
+    
   };
   return (
     <>

@@ -43,7 +43,7 @@ export const AddItemToCart = (customerId , itemId) => {
     try {
       await getAll();
       
-      dispatch(menusActions.setRequieRender())
+       dispatch(menusActions.setRequieRender())
       dispatch(toastActions.setToast({message : `Item Added` , close : 5000 , type : 'success' }))
     } catch (err) {
       console.log(err);

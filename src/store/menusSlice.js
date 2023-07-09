@@ -8,18 +8,15 @@ const menusSlice = createSlice({
     isWaitingForGetMenus: true,
 
     errorInGetMenus: null,
-    isRequireRender : false
+    isRequireRender: false,
   },
   reducers: {
     getMenusFromDb(state, action) {
       state.allMenus = action.payload;
-      
-      
       state.isWaitingForGetMenus = false;
       state.errorInGetMenus = null;
     },
-   
-   
+
     setWaitingTrue(state) {
       state.isWaitingForGetMenus = true;
     },
@@ -29,14 +26,13 @@ const menusSlice = createSlice({
     setErrorInGetMenus(state, action) {
       state.errorInGetDrivers = action.payload;
     },
-   
+
     clearMenusError(state) {
       state.errorInGetDrivers = null;
     },
-    setRequieRender(state){
-      state.isRequireRender = !state.isRequireRender
-    }
-   
+    setRequieRender(state) {
+      state.isRequireRender = !state.isRequireRender;
+    },
   },
 });
 export const menusActions = menusSlice.actions;

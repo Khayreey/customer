@@ -27,7 +27,8 @@ export const getCart = (id) => {
   };
 };
 
-export const checkOut = (id) => {
+export const checkOut = (id , nv) => {
+  console.log(id)
   return async (dispatch) => {
     const getAll = async () => {
       const data = await fetch(`http://127.0.0.1:8000/customer/checkout`, {
@@ -36,16 +37,18 @@ export const checkOut = (id) => {
       });
       if(!data.ok) throw new Error('some thing wrong')
       const response = await data.json()
+      console.log(response.order_id)
       return response.order_id;
     };
     try {
       dispatch(cartActions.setWaitingTrue());
       const orderId =  await getAll();
-      dispatch(getSingleOrder(orderId))
+      dispatch(cartActions.setId(orderId))
+      // dispatch(getSingleOrder(orderId))
       dispatch(
         toastActions.setToast({
-          message: `We Recieved Your Order Succefully`,
-          close: 5000,
+          message: `order Confirmed`,
+          close: false,
           type: "success",
         })
       );
@@ -54,6 +57,7 @@ export const checkOut = (id) => {
       dispatch(cartActions.setWaitingFalse());
       dispatch(menusActions.setRequieRender());
       dispatch(cartActions.clearCartError());
+      nv()
     } catch (err) {
       console.log(err);
       dispatch(cartActions.setErrorInGetCart(err));
@@ -82,7 +86,7 @@ export const outOrder = (info) => {
       dispatch(cartActions.setId(orderId))
       dispatch(
         toastActions.setToast({
-          message: `We Recieved Your Order Succefully`,
+          message: `Order Confirmed`,
           close: 5000,
           type: "success",
         })
@@ -103,13 +107,15 @@ export const outOrder = (info) => {
 export const getSingleOrder = (id) => {
   return async (dispatch) => {
     const getAll = async () => {
-      dispatch(cartActions.setId(""));
+      
       const  data  = await fetch(
         `http://127.0.0.1:8000/customer/track_order/${id}/`
       );
-      console.log(data)
-      if(!data.ok) throw new Error('something wrong')
+     
+       if(!data.ok) throw new Error('something wrong')
       const response = await data.json() 
+      console.log(response)
+      
       return response;
     };
     try {
@@ -119,6 +125,37 @@ export const getSingleOrder = (id) => {
       dispatch(cartActions.setWaitingFalse());
       dispatch(ordActions.getSingleOrderFromDb(data));
       dispatch(cartActions.clearCartError());
+     
+    } catch (err) {
+      console.log(err);
+      dispatch(cartActions.setErrorInGetCart(err));
+      dispatch(cartActions.setWaitingFalse());
+    }
+  };
+};
+
+
+export const calculateCost = (deliveryAdress , pickAddress) => {
+  return async (dispatch) => {
+
+    console.log(`http://127.0.0.1:8000/customer/calculate_cost/${deliveryAdress}/${pickAddress}/`)
+    const getAll = async () => {
+     
+      const  data  = await fetch(
+        `http://127.0.0.1:8000/customer/calculate_cost/${deliveryAdress}/${pickAddress}/`
+      );
+      
+      if(!data.ok) throw new Error('something wrong')
+      const response = await data.json() 
+      console.log(Response)
+      return response;
+    };
+    try {
+      
+      dispatch(cartActions.setWaitingTrue());
+      const data = await getAll();
+      dispatch(cartActions.setWaitingFalse());
+      dispatch(cartActions.setOrderCost(data));
     } catch (err) {
       console.log(err);
       dispatch(cartActions.setErrorInGetCart(err));

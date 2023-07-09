@@ -13,7 +13,7 @@ import {Container} from 'react-bootstrap'
 import ErrorGettingData from "../ErrorGetingData/ErrorGettingData";
 import SkeltonLoader from "../SkeltonLoader/SkeltonLoader";
 import OverLoader from "../OverLoader/OverLoader";
-import { outOrder } from "../../store/cart-actions";
+import { calculateCost, outOrder } from "../../store/cart-actions";
 import {  useNavigate } from "react-router-dom";
 
 const AddOrderForm = () => {
@@ -54,11 +54,11 @@ const AddOrderForm = () => {
            }
           
              dispatch(outOrder(data))
-            navigate('/single' , {replace : true})
+            navigate('/orders' , {replace : true})
         }} 
        
       >
-        {({ handleSubmit }) => {
+        {({ handleSubmit , values }) => {
           return (
             <Form onSubmit={handleSubmit} noValidate>
               <CustomInput
@@ -79,7 +79,7 @@ const AddOrderForm = () => {
                 placeholder="Enter Pick Address"
                 icon={faEnvelope}
               />  
-               <Button  className='w-100 p-2 mt-4'>Caluclate Delivery Cost</Button>
+              
               <Button type='submit' className='w-100 p-2 mt-4'>Order Now</Button>
             </Form>
           );

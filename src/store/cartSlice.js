@@ -7,7 +7,8 @@ const cartSlice = createSlice({
     isWaitingForGetCart: true,
     errorInGetCart: null,
     numOfItemsInCart : 0 , 
-    orderId : ''
+    orderId : '' , 
+    orderCost : 0
   },
   reducers: {
     getCartFromDb(state, action) {
@@ -32,7 +33,9 @@ const cartSlice = createSlice({
     clearCartError(state) {
       state.errorInGetCart = null;
     },
-  
+    setOrderCost(state , action){
+      state.orderCost = action.payload
+    }
   },
 });
 export const cartActions = cartSlice.actions;

@@ -9,11 +9,7 @@ const leftNavActions = [
     listAction: "Manage Cart",
     icon : 'fa-solid fa-cart-shopping' ,
   },
-  {
-   
-    listAction: "Checkout",
-    icon : 'fa-solid fa-cash-register'
-  },
+  
   {
     lists: [
       { link: "orders", txt: "All Orders" },

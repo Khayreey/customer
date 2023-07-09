@@ -17,7 +17,6 @@ const store = configureStore({
         order : ordersSlice.reducer  ,
         ord : ord.reducer ,
         pendingBuisness : pendingBuisnessSlice.reducer , 
-      
         toast : toastSlice.reducer ,
         auth : authSlice.reducer , 
         checkMenu : checkMenuSlice.reducer,

@@ -25,7 +25,7 @@ const SingleMenu = () => {
       <>
       {menuItems[0].map((e , index)=>{
         return (
-           <SingleMenuItem key={index} item={e} className='m-auto' name={e.title} category={e.category} price={e.price}/>
+           <SingleMenuItem key={index} item={e} className='m-auto' description={e.description} name={e.title} category={e.category} price={e.price}/>
         )
       })}
       

@@ -34,20 +34,22 @@ function App() {
       theme: "colored",
       type: type,
     });
-  useEffect(() => {
+    useEffect(()=>{
+      dispatch(getAllMenus())
+    },[])
+    useEffect(() => {
     if (toastToDisplay.message === "") return;
     notify(toastToDisplay.message, toastToDisplay.type, toastToDisplay.close);
     return () => toast.dismiss();
   }, [toastToDisplay]);
 
+ 
   useEffect(()=>{
     if(!customerId || customerId === "") return 
     dispatch(getCart(customerId))
   } , [isRequireRender])
 
-  useEffect(()=>{
-    dispatch(getAllMenus())
-  },[])
+ 
   const routers = createBrowserRouter([
     {
       path: "",
@@ -58,7 +60,6 @@ function App() {
         { path: "/contactus", element: <ContactUs /> },
         { path: "/outorder", element: <OutOrderPage /> },
         { path: "/orders", element: <Orders /> },
-        { path: "/single", element: <SingleOrder /> },
         
       ],
     },
